@@ -258,8 +258,8 @@
             white-space: nowrap;
         }
         
-        /* 弹窗和结束界面按钮 */
-        #resume-btn, #restart-btn, #game-over-back-btn {
+        /* 弹窗和结束界面面按钮按钮 */
+        #resume-btn, #restart-btn, #game-over-back-btn, #pause-back-btn {
             padding: 12px 24px;
             min-width: 120px;
             max-width: 200px;
@@ -418,8 +418,8 @@
             margin: 10px 0;
         }
         
-        /* 游戏结束按钮容器 */
-        #game-over-buttons {
+        /* 暂停和游戏结束按钮容器 */
+        #pause-buttons, #game-over-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -564,7 +564,11 @@
             <div class="message">
                 <p>遊戲暫停</p>
             </div>
-            <button id="resume-btn" class="btn">繼續</button>
+            <!-- 暂停按钮容器 -->
+            <div id="pause-buttons">
+                <button id="resume-btn" class="btn">繼續</button>
+                <button id="pause-back-btn" class="btn">返回初始頁面</button>
+            </div>
         </div>
         
         <div id="game-over">
@@ -689,6 +693,7 @@
         const startBtn = document.getElementById('start-btn');
         const pauseBtn = document.getElementById('pause-btn');
         const resumeBtn = document.getElementById('resume-btn');
+        const pauseBackBtn = document.getElementById('pause-back-btn'); // 新增暂停页面返回按钮
         const pauseScreen = document.getElementById('pause-screen');
         const gameOverScreen = document.getElementById('game-over');
         const finalScoreElement = document.getElementById('final-score');
@@ -918,7 +923,7 @@
                 
                 // 减少出现间隔时间
                 if (gameState.speed > gameState.minSpeed) {
-                    gameState.speed = Math.max(gameState.minSpeed, gameState.speed - gameState.speedDecrement);
+                    gameState.speeded = Math.max(gameState.minSpeed, gameState.speed - gameState.speedDecrement);
                 }
                 
                 // 减少停留时间
@@ -1228,6 +1233,7 @@
         startBtn.addEventListener('click', startGame);
         pauseBtn.addEventListener('click', pauseGame);
         resumeBtn.addEventListener('click', resumeGame);
+        pauseBackBtn.addEventListener('click', returnToInitialScreen); // 新增暂停返回按钮事件
         restartBtn.addEventListener('click', startGame);
         backBtn.addEventListener('click', returnToInitialScreen);
         gameOverBackBtn.addEventListener('click', returnToInitialScreen);
