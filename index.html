@@ -476,9 +476,9 @@
     <div id="initial-screen">
         <h1 class="game-title">非遗打地鼠</h1>
         <div class="initial-buttons">
-            <button id="enter-game" class="initial-btn">进入游戏</button>
-            <button id="game-intro" class="initial-btn">游戏介绍</button>
-            <button id="heritage-intro" class="initial-btn">非遗物件详情</button>
+            <button id="enter-game" class="initial-btn">進入遊戲</button>
+            <button id="game-intro" class="initial-btn">遊戲介紹</button>
+            <button id="heritage-intro" class="initial-btn">非遺項目介紹</button>
         </div>
     </div>
     
@@ -486,27 +486,27 @@
     <div id="intro-modal" class="modal">
         <div class="modal-content-wrapper">
             <div class="modal-content">
-                <h2 class="modal-title">游戏介绍</h2>
-                <p class="modal-text">非遗打地鼠是一款结合传统文化与经典游戏的休闲小游戏。游戏中，各种非遗文化物品会从洞中弹出，你需要快速点击它们来获得分数。</p>
-                <p class="modal-text">游戏规则：</p>
+                <h2 class="modal-title">遊戲介紹</h2>
+                <p class="modal-text">非遗打地鼠是一款結合傳統文化與經典遊戲的休閒遊戲。遊戲中，各種非遺技藝會從洞中彈出，你需要快速點擊它們來獲得分數。</p>
+                <p class="modal-text">遊戲規則：</p>
                 <ul class="modal-text" style="padding-left: 20px;">
-                    <li>点击弹出的非遗物品得10分</li>
-                    <li>未点击非遗物品会扣5分</li>
-                    <li>当分数为0时如果未点击地鼠，第一次会提示"要加油哦！"，第二次游戏将结束</li>
-                    <li>注意避开炸弹，点击炸弹会结束游戏</li>
-                    <li>随着分数增加，游戏速度会逐渐加快，每得50分提升一次难度</li>
+                    <li>點擊彈出的的非遺技藝得10分。</li>
+                    <li>未點擊非遺技藝則扣5分。</li>
+                    <li>當分數為0時，如果未點擊非遺技藝，第一次會有文字提示，第二次遊戲直接結束。</li>
+                    <li>注意避開不是非遺技藝的項目，點擊會直接結束遊戲。</li>
+                    <li>隨著分數的提升，遊戲速度會加快，每得50分提升一次難度。</li>
                 </ul>
             </div>
-            <button class="close-btn" data-modal="intro-modal">关闭</button>
+            <button class="close-btn" data-modal="intro-modal">關閉</button>
         </div>
     </div>
     
-    <!-- 非遗物件详情弹窗 -->
+    <!-- 非遗技藝介紹弹窗 -->
     <div id="heritage-modal" class="modal">
         <div class="modal-content-wrapper">
             <div class="modal-content">
-                <h2 class="modal-title">非遗物件详情</h2>
-                <p class="modal-text">游戏中出现的地鼠角色均为中国非物质文化遗产代表性项目，包括：</p>
+                <h2 class="modal-title">非遺技藝介紹</h2>
+                <p class="modal-text">遊戲中出現了以下中國非物質文化遺產代表性項目，包括：</p>
                 
                 <div class="heritage-list" id="heritage-container">
                     <!-- 非遗物件会通过JS动态生成 -->
@@ -523,7 +523,7 @@
         
         <div id="score-board">
             <div>得分: <span id="score">0</span></div>
-            <div>记录: <span id="high-score">0</span></div>
+            <div>紀錄: <span id="high-score">0</span></div>
         </div>
         
         <div id="game-board">
@@ -533,25 +533,25 @@
         <!-- 倒计时和提示显示 -->
         <div id="countdown"></div>
         <div id="zero-score-hint">要加油哦！</div>
-        <div id="difficulty-hint">难度提升了！</div>
+        <div id="difficulty-hint">難度提升了！</div>
         
         <div id="controls">
-            <button id="start-btn" class="btn">开始</button>
-            <button id="pause-btn" class="btn" disabled>暂停</button>
+            <button id="start-btn" class="btn">開始</button>
+            <button id="pause-btn" class="btn" disabled>暫停</button>
         </div>
         
         <div id="pause-screen">
             <div class="message">
-                <p>游戏暂停</p>
+                <p>遊戲暫停</p>
             </div>
-            <button id="resume-btn" class="btn">继续</button>
+            <button id="resume-btn" class="btn">繼續</button>
         </div>
         
         <div id="game-over">
             <div class="message">
-                <p>游戏结束</p>
-                <p>最终得分: <span id="final-score">0</span></p>
-                <p>最高记录: <span id="final-high-score">0</span></p>
+                <p>遊戲結束</p>
+                <p>最終得分: <span id="final-score">0</span></p>
+                <p>最高紀錄: <span id="final-high-score">0</span></p>
             </div>
             <!-- 游戏结束按钮容器 -->
             <div id="game-over-buttons">
@@ -568,61 +568,61 @@
                 id: 'h1', 
                 name: '紮作技藝', 
                 img: '0001.jpg',  // 替换为1.jpg
-                desc: '剪纸是一种用剪刀或刻刀在纸上剪刻花纹，用于装点生活或配合其他民俗活动的民间艺术。'
+                desc: '以竹篾等爲骨、彩紙布帛爲衣，手工扎製出形態鮮活的節慶裝飾與民俗造型，用於節慶或祭祀儀式。'
             },
             { 
                 id: 'h2', 
                 name: '制茶技藝', 
                 img: '0002.jpg',  // 替换为2.jpg
-                desc: '皮影戏，又称"影子戏"或"灯影戏"，是一种以兽皮或纸板做成的人物剪影以表演故事的民间戏剧。'
+                desc: '經殺青、揉捻、發酵等傳統工序，將茶葉轉化爲兼具香氣與韻味的飲品，凝聚着古人的品味。'
             },
             { 
                 id: 'h3', 
                 name: '舞獅表演', 
                 img: '0003.jpg',  // 替换为3.jpg
-                desc: '刺绣是针线在织物上绣制的各种装饰图案的总称，中国刺绣主要有苏绣、湘绣、蜀绣和粤绣四大门类。'
+                desc: '舞者身披醒獅，配合鑼鼓節奏演繹獅子的靈動姿態，是驅邪納福、烘托喜慶氛圍的傳統民俗表演。常見於節日、神誕、婚嫁、 慶典、開光或喪禮等場合。'
             },
             { 
                 id: 'h4', 
                 name: '布老虎', 
                 img: '0004.jpg',  // 替换为4.jpg
-                desc: '陶艺是中国传统古老文化与现代艺术结合的艺术形式，是一门综合艺术。'
+                desc: '以棉布爲材、手工縫製彩繪而成，造型憨態可掬，既是孩童玩具，也是象徵吉祥平安的傳統手工藝品，一針一線中蘊藏著長輩對孩童的祝福與愛。'
             },
             { 
                 id: 'h5', 
                 name: '剪紙', 
                 img: '0005.png',  // 替换为5.jpg
-                desc: '木雕是雕塑的一种，在我们国家常常被称为"民间工艺"，可以分为立体圆雕、根雕、浮雕三大类。'
+                desc: '用剪刀或刻刀在紙上鏤空剪刻，呈現山水、人物、字樣、動物、民俗等圖案，是兼具裝飾性與故事性的民間視覺藝術。'
             },
             { 
                 id: 'h6', 
                 name: '字畫裝裱', 
                 img: '0006.jpeg',  // 替换为6.jpg
-                desc: '年画是中国特有的民间美术形式，起源于汉代，发展于唐宋，盛行于明清。'
+                desc: '通過托、裱、鑲、裝等工序，保護字畫作品、提升其觀賞性，是延續傳統書畫生命的重要技藝。'
             },
             { 
                 id: 'h7', 
-                name: '榫卯結構', 
+                name: '榫卯技藝', 
                 img: '0007.jpeg',  // 替换为7.jpg
-                desc: '竹编是用竹子加工成各种篾条，再用这些篾条编织成各种实用品和艺术品的传统手工艺。'
+                desc: '構件無需釘子膠水，僅憑木材凹（榫）凸（卯）相互咬合實現連接，結構穩定且抗震是中國傳統木構建築與傢俱的核心技藝，盡顯匠心智慧。'
             },
             { 
                 id: 'h8', 
                 name: '傳統中醫藥文化', 
                 img: '0008.jpeg',  // 替换为8.jpg
-                desc: '糖画是一种传统民间手工艺，以糖为材料来进行造型的，所用的工具仅一勺一铲。'
+                desc: '涼茶、蛇酒和跌打是傳統中醫藥文化的一部分，承載了獨特的民間智慧及傳統文化。涼茶是祛濕降火、解燥消暑和防治感冒的一種飲料，以特定的中草藥烹煮而成。蛇酒具驅風去濕及壯腰保腎的功效。跌打屬傳統中醫的骨傷科，主治扭傷、跌傷、撞傷和碰傷。以按摩配合塗藥酒、藥散、飲藥茶和拔火罐等療法輔助。'
             },
             { 
                 id: 'h9', 
                 name: '青銅鑄造', 
                 img: '0009.jpeg',  // 替换为9.jpg
-                desc: '风筝是由古代劳动人民发明于中国东周春秋时期，至今已2000多年。'
+                desc: '青銅冶鑄技術是中國古代金屬加工的核心工藝體系，起源於新石器時代晚期。運用範鑄、失蠟法等工藝，將青銅熔鑄爲禮器、兵器、器皿等，見證了古代冶金技術與禮制文化的輝煌。'
             },
             { 
                 id: 'h10', 
                 name: '豆品製作技藝', 
                 img: '00010.jpeg',  // 替换为10.jpg
-                desc: '面塑，俗称面花、礼馍、花糕、捏面人，是源于山东、山西、北京的中国民间传统艺术之一。'
+                desc: '以黃豆爲原料，經浸泡、磨漿、點滷等流程，製作出豆腐、腐竹等風味豆品，是百姓飲食文化的重要組成部分。'
             }
         ];
         
@@ -855,8 +855,8 @@
         
         // 增加难度
         function increaseDifficulty() {
-            // 每得20分增加一次难度
-            if (gameState.score - gameState.lastDifficultyIncrease >= 20) {
+            // 每得50分增加一次难度
+            if (gameState.score - gameState.lastDifficultyIncrease >= 50) {
                 gameState.lastDifficultyIncrease = gameState.score;
                 
                 // 减少出现间隔时间
