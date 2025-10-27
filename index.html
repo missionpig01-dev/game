@@ -209,6 +209,26 @@
             background: #000;
         }
         
+        /* 分数提示样式 */
+        .score-popup {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 10;
+            transition: all 0.6s ease-out;
+        }
+        
+        .score-popup.positive {
+            color: #4CAF50; /* 绿色 +10 */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .score-popup.negative {
+            color: #F44336; /* 红色 -5 */
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
         /* 控制按钮区域 */
         #controls {
             position: relative;
@@ -562,66 +582,66 @@
     </div>
 
     <script>
-        // 非遗物品详细信息 - 10个项目（图片替换为1.jpg至10.jpg）
+        // 非遗物品详细信息 - 10个项目
         const heritageItems = [
             { 
                 id: 'h1', 
                 name: '紮作技藝', 
-                img: '0001.jpg',  // 替换为1.jpg
+                img: '0001.jpg',
                 desc: '以竹篾等爲骨、彩紙布帛爲衣，手工扎製出形態鮮活的節慶裝飾與民俗造型，用於節慶或祭祀儀式。'
             },
             { 
                 id: 'h2', 
                 name: '制茶技藝', 
-                img: '0002.jpg',  // 替换为2.jpg
+                img: '0002.jpg',
                 desc: '經殺青、揉捻、發酵等傳統工序，將茶葉轉化爲兼具香氣與韻味的飲品，凝聚着古人的品味。'
             },
             { 
                 id: 'h3', 
                 name: '舞獅表演', 
-                img: '0003.jpg',  // 替换为3.jpg
-                desc: '舞者身披醒獅，配合鑼鼓節奏演繹獅子的靈動姿態，是驅邪納福、烘托喜慶氛圍的傳統民俗表演。常見於節日、神誕、婚嫁、 慶典、開光或喪禮等場合。'
+                img: '0003.jpg',
+                desc: '舞者身披醒獅，配合鑼鼓節奏演繹獅子的靈動姿態，是驅邪納福、烘托喜慶氛圍的傳統民俗表演。'
             },
             { 
                 id: 'h4', 
                 name: '布老虎', 
-                img: '0004.jpg',  // 替换为4.jpg
-                desc: '以棉布爲材、手工縫製彩繪而成，造型憨態可掬，既是孩童玩具，也是象徵吉祥平安的傳統手工藝品，一針一線中蘊藏著長輩對孩童的祝福與愛。'
+                img: '0004.jpg',
+                desc: '以棉布爲材、手工縫製彩繪而成，造型憨態可掬，既是孩童玩具，也是象徵吉祥平安的傳統手工藝品。'
             },
             { 
                 id: 'h5', 
                 name: '剪紙', 
-                img: '0005.png',  // 替换为5.jpg
+                img: '0005.png',
                 desc: '用剪刀或刻刀在紙上鏤空剪刻，呈現山水、人物、字樣、動物、民俗等圖案，是兼具裝飾性與故事性的民間視覺藝術。'
             },
             { 
                 id: 'h6', 
                 name: '字畫裝裱', 
-                img: '0006.jpeg',  // 替换为6.jpg
+                img: '0006.jpeg',
                 desc: '通過托、裱、鑲、裝等工序，保護字畫作品、提升其觀賞性，是延續傳統書畫生命的重要技藝。'
             },
             { 
                 id: 'h7', 
                 name: '榫卯技藝', 
-                img: '0007.jpeg',  // 替换为7.jpg
-                desc: '構件無需釘子膠水，僅憑木材凹（榫）凸（卯）相互咬合實現連接，結構穩定且抗震是中國傳統木構建築與傢俱的核心技藝，盡顯匠心智慧。'
+                img: '0007.jpeg',
+                desc: '構件無需釘子膠水，僅憑木材凹（榫）凸（卯）相互咬合實現連接，結構穩定且抗震是中國傳統木構建築與傢俱的核心技藝。'
             },
             { 
                 id: 'h8', 
                 name: '傳統中醫藥文化', 
-                img: '0008.jpeg',  // 替换为8.jpg
-                desc: '涼茶、蛇酒和跌打是傳統中醫藥文化的一部分，承載了獨特的民間智慧及傳統文化。涼茶是祛濕降火、解燥消暑和防治感冒的一種飲料，以特定的中草藥烹煮而成。蛇酒具驅風去濕及壯腰保腎的功效。跌打屬傳統中醫的骨傷科，主治扭傷、跌傷、撞傷和碰傷。以按摩配合塗藥酒、藥散、飲藥茶和拔火罐等療法輔助。'
+                img: '0008.jpeg',
+                desc: '涼茶、蛇酒和跌打是傳統中醫藥文化的一部分，承載了獨特的民間智慧及傳統文化。'
             },
             { 
                 id: 'h9', 
                 name: '青銅鑄造', 
-                img: '0009.jpeg',  // 替换为9.jpg
-                desc: '青銅冶鑄技術是中國古代金屬加工的核心工藝體系，起源於新石器時代晚期。運用範鑄、失蠟法等工藝，將青銅熔鑄爲禮器、兵器、器皿等，見證了古代冶金技術與禮制文化的輝煌。'
+                img: '0009.jpeg',
+                desc: '青銅冶鑄技術是中國古代金屬加工的核心工藝體系，起源於新石器時代晚期。'
             },
             { 
                 id: 'h10', 
                 name: '豆品製作技藝', 
-                img: '00010.jpeg',  // 替换为10.jpg
+                img: '00010.jpeg',
                 desc: '以黃豆爲原料，經浸泡、磨漿、點滷等流程，製作出豆腐、腐竹等風味豆品，是百姓飲食文化的重要組成部分。'
             }
         ];
@@ -638,10 +658,10 @@
             isPlaying: false,
             isPaused: false,
             isCountingDown: false,
-            isShowingHint: false, // 是否正在显示提示
+            isShowingHint: false,
             score: 0,
             highScore: localStorage.getItem('moleHighScore') ? parseInt(localStorage.getItem('moleHighScore')) : 0,
-            zeroMissCount: 0, // 记录0分时未点击地鼠的次数
+            zeroMissCount: 0,
             holes: [],
             currentMoles: [],
             timer: null,
@@ -651,7 +671,7 @@
             moleDuration: 1000,
             minMoleDuration: 300,
             moleDurationDecrement: 50,
-            lastDifficultyIncrease: 0 // 记录上次难度提升的分数
+            lastDifficultyIncrease: 0
         };
         
         // DOM元素
@@ -677,11 +697,44 @@
         const backBtn = document.getElementById('back-btn');
         const gameOverBackBtn = document.getElementById('game-over-back-btn');
         const countdownElement = document.getElementById('countdown');
-        const zeroScoreHint = document.getElementById('zero-score-hint'); // 0分未点击提示元素
-        const difficultyHint = document.getElementById('difficulty-hint'); // 难度提升提示元素
+        const zeroScoreHint = document.getElementById('zero-score-hint');
+        const difficultyHint = document.getElementById('difficulty-hint');
         
         // 初始化高分
         highScoreElement.textContent = gameState.highScore;
+        
+        // 显示分数提示
+        function showScorePopup(hole, value) {
+            // 创建分数提示元素
+            const popup = document.createElement('div');
+            popup.className = `score-popup ${value > 0 ? 'positive' : 'negative'}`;
+            popup.textContent = value > 0 ? `+${value}` : value;
+            
+            // 获取地鼠位置并设置提示位置
+            const holeRect = hole.element.getBoundingClientRect();
+            const boardRect = gameBoard.getBoundingClientRect();
+            
+            popup.style.left = `${holeRect.left - boardRect.left + holeRect.width / 2}px`;
+            popup.style.top = `${holeRect.top - boardRect.top + holeRect.height / 4}px`;
+            popup.style.transform = 'translate(-50%, 0)';
+            popup.style.opacity = '1';
+            
+            // 添加到游戏板
+            gameBoard.appendChild(popup);
+            
+            // 动画效果：上移并淡出
+            setTimeout(() => {
+                popup.style.transform = 'translate(-50%, -50px)';
+                popup.style.opacity = '0';
+                
+                // 动画结束后移除元素
+                setTimeout(() => {
+                    if (popup.parentNode === gameBoard) {
+                        gameBoard.removeChild(popup);
+                    }
+                }, 600);
+            }, 10);
+        }
         
         // 初始化非遗详情
         function initHeritageDetails() {
@@ -795,7 +848,7 @@
             });
         }
         
-        // 处理地鼠点击 - 修复核心区域
+        // 处理地鼠点击
         function handleMoleClick(mole) {
             const holeId = parseInt(mole.dataset.holeId);
             const hole = gameState.holes[holeId];
@@ -815,9 +868,10 @@
                 return;
             }
             
-            // 加分
+            // 加分并显示+10提示
             gameState.score += 10;
             updateScore();
+            showScorePopup(hole, 10);
             
             // 重置0分未点击计数
             gameState.zeroMissCount = 0;
@@ -825,7 +879,7 @@
             // 检查是否需要提升难度
             increaseDifficulty();
             
-            // 关键修复：点击地鼠后立即安排下一个地鼠出现
+            // 安排下一个地鼠
             scheduleNextMole();
         }
         
@@ -873,9 +927,7 @@
                 }
                 
                 // 显示难度提升提示
-                // 先清除当前计时器
                 clearTimeout(gameState.timer);
-                // 显示提示
                 showHint(difficultyHint);
             }
         }
@@ -940,7 +992,7 @@
                     if (!item.isBomb && !item.clicked) {
                         // 扣分逻辑
                         if (gameState.score === 0) {
-                            // 分数为0时未点击
+                            // 分数为0时未点击，不显示-5
                             gameState.zeroMissCount++;
                             
                             if (gameState.zeroMissCount >= 2) {
@@ -950,17 +1002,18 @@
                             } else {
                                 // 第一次0分未点击，显示提示
                                 showHint(zeroScoreHint);
-                                return; // 不继续调用scheduleNextMole，等待提示结束后再继续
+                                return;
                             }
                         } else {
-                            // 分数不为0时扣5分
+                            // 分数不为0时扣5分并显示-5提示
                             gameState.score = Math.max(0, gameState.score - 5);
                             updateScore();
+                            showScorePopup(hole, -5);
                         }
                     }
                     
                     gameState.currentMoles = gameState.currentMoles.filter(m => m.hole !== hole);
-                    scheduleNextMole(); // 继续游戏流程
+                    scheduleNextMole();
                 }
             }, gameState.moleDuration);
             
@@ -1017,8 +1070,8 @@
             gameState.isCountingDown = false;
             gameState.isShowingHint = false;
             gameState.score = 0;
-            gameState.zeroMissCount = 0; // 重置0分未点击计数
-            gameState.lastDifficultyIncrease = 0; // 重置难度提升记录
+            gameState.zeroMissCount = 0;
+            gameState.lastDifficultyIncrease = 0;
             gameState.speed = 1500;
             gameState.moleDuration = 1000;
             
@@ -1026,8 +1079,8 @@
             updateScore();
             pauseScreen.classList.remove('active');
             gameOverScreen.classList.remove('active');
-            zeroScoreHint.classList.remove('active'); // 确保提示隐藏
-            difficultyHint.classList.remove('active'); // 确保提示隐藏
+            zeroScoreHint.classList.remove('active');
+            difficultyHint.classList.remove('active');
             
             // 隐藏返回按钮
             backBtn.classList.remove('active');
@@ -1115,8 +1168,8 @@
             gameState.isPaused = false;
             gameState.isCountingDown = false;
             gameState.isShowingHint = false;
-            gameState.zeroMissCount = 0; // 重置计数
-            gameState.lastDifficultyIncrease = 0; // 重置难度提升记录
+            gameState.zeroMissCount = 0;
+            gameState.lastDifficultyIncrease = 0;
             
             // 清除所有计时器
             gameState.currentMoles.forEach(m => clearTimeout(m.timeout));
