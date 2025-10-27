@@ -948,8 +948,8 @@
         
         // 随机选择物品（地鼠或炸弹）
         function getRandomItem() {
-            // 90%概率是地鼠，10%概率是炸弹
-            if (Math.random() < 0.9) {
+            // 70%概率是地鼠，30%概率是炸弹
+            if (Math.random() < 0.7) {
                 const randomIndex = Math.floor(Math.random() * heritageItems.length);
                 return { ...heritageItems[randomIndex], isBomb: false, clicked: false };
             } else {
